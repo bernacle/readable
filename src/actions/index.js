@@ -1,9 +1,4 @@
-
 import ReadableAPI from '../utils/ReadableAPI'
-
-export const LIST_CATEGORIES = 'LIST_CATEGORIES'
-export const LIST_POSTS = 'LIST_POSTS'
-export const ADD_POST = 'ADD_POST'
 
 export const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
@@ -12,15 +7,22 @@ export const receiveCategories = categories => ({
 
 export const fetchCategories = () => dispatch => (
    //async call to api, and if ok dispatch receive action
-   
-   ReadableAPI.getAllCategories()
-
+   ReadableAPI
+      .getAllCategories()
+      .then(categories => dispatch(receiveCategories(categories)))
 )
 
 export const receivePosts = posts => ({
   type: RECEIVE_POSTS,
   posts
 })
+
+export const fetchPosts = () => dispatch => (
+   //async call to api, and if ok dispatch receive action
+   ReadableAPI
+      .getAllPosts()
+      .then(posts => dispatch(receivePosts(posts)))
+)
 
 // export const fetchPosts = () => dispatch => (
 //   //async call to api, and if ok dispatch receive action
@@ -31,6 +33,20 @@ export const receivePost = post => ({
   post
 })
 
-// export const fetchPost = () => dispatch => (
-//   //async call to api, and if ok dispatch receive action
-// )
+export const fetchPost = (post) => dispatch => (
+   //async call to api, and if ok dispatch receive action
+   ReadableAPI
+      .getPost(post.id)
+      .then(post => dispatch(receivePost(post)))
+)
+
+export const receiveComments = comments => ({
+  type: RECEIVE_COMMENTS,
+  comments
+})
+
+export const fetchComments = (post) => dispatch => (
+  ReadableAPI
+      .getAllComments(post.id)
+      .then(comments => dispatch(receiveComments(comments)))
+)
