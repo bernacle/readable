@@ -1,16 +1,16 @@
 import {
-    RECEIVE_POST
+    RECEIVE_COMMENT
 } from '../actions'
 
 const initialState = {}
 
-const post = (state = initialState, action) => {
+const comment = (state = initialState, action) => {
 
   switch (action.type) {
-      case RECEIVE_POST:
+      case RECEIVE_COMMENT:
           return {
             ...state,
-            post: action.post
+            comment: action.comment
           }
 
 
@@ -19,4 +19,4 @@ const post = (state = initialState, action) => {
   }
 }
 
-export default post
+export default comment

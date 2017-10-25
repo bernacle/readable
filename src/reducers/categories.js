@@ -2,9 +2,7 @@ import {
     fetchCategories
 } from '../actions'
 
-const initialState = {
-  categories: [],
-}
+const initialState = []
 
 const categories = (state = initialState, action) => {
   const {categories} = action
