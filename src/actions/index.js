@@ -62,6 +62,39 @@ export const insertPost = (post) => dispatch => (
       .then(post => dispatch(addPost(post)))
 )
 
+export const editPost = post => ({
+  type: EDIT_POST,
+  post
+})
+
+export const updatePost = (post) => dispatch => (
+  ReadableAPI
+      .updatePost(post.id, post.title, post.body)
+      .then(post => dispatch(editPost(post)))
+)
+
+export const deletePost = post => ({
+  type: DELETE_POST,
+  post
+})
+
+export const removePost = (post) => dispatch => (
+  ReadableAPI
+      .removePost(post.id)
+      .then(post => dispatch(deletePost(post)))
+)
+
+export const votePost = post => ({
+  type: VOTE_POST,
+  post
+})
+
+export const fetchVotePost = (post, option) => dispatch => (
+  ReadableAPI
+      .votePost(post.id, option)
+      .then(post => dispatch(votePost(post)))
+)
+
 export const receiveComments = comments => ({
   type: RECEIVE_COMMENTS,
   comments
@@ -73,13 +106,58 @@ export const fetchComments = (post) => dispatch => (
       .then(comments => dispatch(receiveComments(comments)))
 )
 
-export const votePost = post => ({
-  type: VOTE_POST,
-  post
+export const addComment = comment => ({
+  type: ADD_COMMENT,
+  comment
 })
 
-export const incrementVotePost = (post, option) => dispatch => (
+export const insertComment = (comment) => dispatch => (
   ReadableAPI
-      .votePost(post.id, option)
-      .then(post => dispatch(receivePost(post)))
+      .addComment(comment)
+      .then(comment => dispatch(addComment(comment)))
+)
+
+export const receiveComment = comment => ({
+  type: RECEIVE_COMMENT,
+  comment
+})
+
+export const fetchComment = (comment) => dispatch => (
+   //async call to api, and if ok dispatch receive action
+   ReadableAPI
+      .getComment(comment.id)
+      .then(comment => dispatch(receiveComment(comment)))
+)
+
+export const voteComment = comment => ({
+  type: VOTE_COMMENT,
+  comment
+})
+
+export const fetchVoteComment = (comment, option) => dispatch => (
+  ReadableAPI
+      .voteComment(comment.id, option)
+      .then(comment => dispatch(voteComment(comment)))
+)
+
+export const editComment = comment => ({
+  type: EDIT_COMMENT,
+  comment
+})
+
+export const updateComment = (comment) => dispatch => (
+  ReadableAPI
+      .updateComment(comment.id, comment.timestamp, comment.body)
+      .then(comment => dispatch(editComment(comment)))
+)
+
+export const deleteComment = comment => ({
+  type: DELETE_POST,
+  comment
+})
+
+export const removeComment = (comment) => dispatch => (
+  ReadableAPI
+      .removeComment(comment.id)
+      .then(comment => dispatch(deleteComment(comment)))
 )

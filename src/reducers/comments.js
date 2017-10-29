@@ -17,11 +17,12 @@ const comments = (state = initialState, action) => {
           return {
             ...state,
             comments: state.concat({
-              id: action.id,
-              timestamp: action.timestamp,
-              body: action.body,
-              author: action.author,
-              parentId: action.parentId,
+              comment: action.comment
+              // id: action.id,
+              // timestamp: action.timestamp,
+              // body: action.body,
+              // author: action.author,
+              // parentId: action.parentId,
             })
           }
       default:
