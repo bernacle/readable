@@ -59,7 +59,7 @@ export const addPost = post => ({
 export const insertPost = (post) => dispatch => (
   ReadableAPI
       .addPost(post)
-      .then(post => dispatch)
+      .then(post => dispatch(addPost(post)))
 )
 
 export const receiveComments = comments => ({
@@ -71,4 +71,15 @@ export const fetchComments = (post) => dispatch => (
   ReadableAPI
       .getAllComments(post.id)
       .then(comments => dispatch(receiveComments(comments)))
+)
+
+export const votePost = post => ({
+  type: VOTE_POST,
+  post
+})
+
+export const incrementVotePost = (post, option) => dispatch => (
+  ReadableAPI
+      .votePost(post.id, option)
+      .then(post => dispatch(receivePost(post)))
 )

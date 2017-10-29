@@ -4,30 +4,28 @@ import {
     ADD_POST
 } from '../actions'
 
-const initialState = {
-  posts: [],
-}
+const initialState = []
 
 const posts = (state = initialState, action) => {
   const {posts} = action
 
   switch (action.type) {
       case RECEIVE_POSTS:
-          return {
-            ...state,
-            posts: action.posts
-          }
+          return [
+            action.posts
+          ]
 
       case ADD_POST:
           return {
             ...state,
-            posts: state.posts.concat({
-              id: action.id,
-              timestamp: action.timestamp,
-              title: action.title,
-              body: action.body,
-              author: action.author,
-              category: action.category,
+            posts: state.concat({
+              post: action.post,
+              // id: action.id,
+              // timestamp: action.timestamp,
+              // title: action.title,
+              // body: action.body,
+              // author: action.author,
+              // category: action.category,
             })
           }
 

@@ -8,12 +8,22 @@ const comments = (state = initialState, action) => {
   const {comments} = action
 
   switch (action.type) {
-      case RECEIVE_comments:
+      case RECEIVE_COMMENTS:
+          return [
+            action.comments
+          ]
+
+      case ADD_COMMENTS:
           return {
             ...state,
-            comments: action.comments
+            comments: state.concat({
+              id: action.id,
+              timestamp: action.timestamp,
+              body: action.body,
+              author: action.author,
+              parentId: action.parentId,
+            })
           }
-
       default:
           return state
   }
