@@ -1,5 +1,6 @@
 import {
-    RECEIVE_COMMENTS
+    RECEIVE_COMMENTS,
+    ADD_COMMENT
 } from '../actions'
 
 const initialState = []
@@ -13,7 +14,7 @@ const comments = (state = initialState, action) => {
             action.comments
           ]
 
-      case ADD_COMMENTS:
+      case ADD_COMMENT:
           return {
             ...state,
             comments: state.concat({

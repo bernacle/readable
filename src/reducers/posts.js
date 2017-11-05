@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux'
 import {
     RECEIVE_POSTS,
     ADD_POST

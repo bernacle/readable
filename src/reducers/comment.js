@@ -1,5 +1,8 @@
 import {
-    RECEIVE_COMMENT
+    RECEIVE_COMMENT,
+    VOTE_COMMENT,
+    EDIT_COMMENT,
+    DELETE_COMMENT
 } from '../actions'
 
 const initialState = {

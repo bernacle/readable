@@ -1,5 +1,5 @@
 import {
-    fetchCategories
+    RECEIVE_CATEGORIES
 } from '../actions'
 
 const initialState = []
