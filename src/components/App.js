@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as ReadableAPI from '../utils/ReadableAPI'
+import CategoriesBar from './CategoriesBar'
 import { fetchCategories, fetchPosts } from '../actions'
 import { connect } from 'react-redux'
 
@@ -16,17 +17,9 @@ componentDidMount(){
 
     return (
       <div className='container'>
-        <nav>
-        <ul className='categories'>
-          {categories.map((category) => (
-            <li>
-              <a href="/">
-                <h2>{category.name}</h2>
-              </a>
-            </li>
-          ))}
-        </ul>
-        </nav>
+        <CategoriesBar
+            categories={categories}
+        />
         <div>
           <h1>HackerNews</h1>
           <ul className='posts'>
