@@ -10,9 +10,7 @@ const posts = (state = initialState, action) => {
 
   switch (action.type) {
       case RECEIVE_POSTS:
-          return [
-            action.posts
-          ]
+          return action.posts
 
       case ADD_POST:
           return {
