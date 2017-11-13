@@ -10,9 +10,7 @@ const comments = (state = initialState, action) => {
 
   switch (action.type) {
       case RECEIVE_COMMENTS:
-          return [
-            action.comments
-          ]
+          return action.comments
 
       case ADD_COMMENT:
           return {
