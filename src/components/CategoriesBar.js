@@ -1,20 +1,24 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchCategoryPosts } from '../actions'
 
 class CategoriesBar extends Component {
 
+handleClick = (event) => {
+  this.props.dispatch(fetchCategoryPosts(event.target.value))
+}
+
     render(){
-        const { categories } = this.props
+        const { categories, posts, option } = this.props
 
         return(
           <nav>
             <ul className='categories'>
-              {categories.map((category) => (
-                <li>
-                  <a href="/">
-                    <h2>{category.name}</h2>
-                  </a>
-                </li>
-              ))}
+               <select value={option} onChange={this.handleClick}>
+                  {categories.map((category) => (
+                    <option key={category.name} value={category.name}>{category.name}</option>
+                  ))}
+                </select>
             </ul>
           </nav>
         )
@@ -22,4 +26,10 @@ class CategoriesBar extends Component {
 
 }
 
-export default CategoriesBar
+function mapStateToProps(state) {
+  return {
+    posts: state.posts
+  }
+}
+
+export default connect(mapStateToProps)(CategoriesBar)

@@ -9,11 +9,11 @@ class Posts extends Component {
           <div>
             <h1>HackerNews</h1>
             <ul className='posts'>
-            {posts.map((post) => (
-              <li key={post.id}>
-                <a href="">{post.title}</a>
-              </li>
-            ))}
+              {posts.map((post) => (
+                <li key={post.id}>
+                  <a href="">{post.title}</a>
+                </li>
+              ))}
             </ul>
           </div>
         )

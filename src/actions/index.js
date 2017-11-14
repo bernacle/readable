@@ -11,7 +11,7 @@ export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const VOTE_COMMENT = 'VOTE_COMMENT'
-export const EDIT_COMMENT = 'EDIT_COMMENT'
+export const EDIT_COMMENT = 'EDIT_COMME NT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 
 export const receiveCategories = categories => ({
@@ -41,12 +41,9 @@ export const fetchPosts = () => dispatch => (
 
 export const fetchCategoryPosts = (category) => dispatch => (
     ReadableAPI
-      .getAllCategoryPosts()
+      .getAllCategoryPosts(category)
       .then(posts => dispatch(receivePosts(posts)))
 )
-// export const fetchPosts = () => dispatch => (
-//   //async call to api, and if ok dispatch receive action
-// )
 
 export const receivePost = post => ({
   type: RECEIVE_POST,
