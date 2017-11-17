@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCategoryPosts } from '../actions'
+import { fetchCategoryPosts, fetchPosts } from '../actions'
 
 class CategoriesBar extends Component {
 
 handleClick = (event) => {
-  this.props.dispatch(fetchCategoryPosts(event.target.value))
+  if (event.target.value === "all"){
+    this.props.dispatch(fetchPosts(event.target.value))
+  } else {
+    this.props.dispatch(fetchCategoryPosts(event.target.value))
+  }
+
 }
 
     render(){
@@ -15,6 +20,7 @@ handleClick = (event) => {
           <nav>
             <ul className='categories'>
                <select value={option} onChange={this.handleClick}>
+                  <option key="all" value="all">All</option>
                   {categories.map((category) => (
                     <option key={category.name} value={category.name}>{category.name}</option>
                   ))}

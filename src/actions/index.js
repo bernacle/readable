@@ -50,10 +50,10 @@ export const receivePost = post => ({
   post
 })
 
-export const fetchPost = (post) => dispatch => (
+export const fetchPost = (id) => dispatch => (
    //async call to api, and if ok dispatch receive action
    ReadableAPI
-      .getPost(post.id)
+      .getPost(id)
       .then(post => dispatch(receivePost(post)))
 )
 

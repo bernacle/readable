@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Posts extends Component {
 
@@ -11,7 +12,7 @@ class Posts extends Component {
             <ul className='posts'>
               {posts.map((post) => (
                 <li key={post.id}>
-                  <a href="">{post.title}</a>
+                  <Link to={`/posts/${post.id}`}>{post.title}</Link>
                 </li>
               ))}
             </ul>

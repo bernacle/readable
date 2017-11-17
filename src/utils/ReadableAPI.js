@@ -36,7 +36,7 @@ export const addPost = (body) =>
 export const getPost = (id) =>
   fetch(`${api}/posts/${id}`, { headers })
     .then(res => res.json())
-    .then(data => data.post)
+    .then(data => data)
 
 export const votePost = (id, option) =>
   fetch(`${api}/posts/${id}`, {

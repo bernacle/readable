@@ -16,7 +16,7 @@ const initialState = {
   deleted: false
 }
 
-const post = (state = initialState, action) => {
+const post = (state = {initialState}, action) => {
 
   switch (action.type) {
       case RECEIVE_POST:
