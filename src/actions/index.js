@@ -106,9 +106,9 @@ export const receiveComments = comments => ({
   comments
 })
 
-export const fetchComments = (post) => dispatch => (
+export const fetchComments = (id) => dispatch => (
   ReadableAPI
-      .getAllComments(post.id)
+      .getAllComments(id)
       .then(comments => dispatch(receiveComments(comments)))
 )
 

@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchPost } from '../actions'
+import { fetchPost, fetchComments } from '../actions'
 import { connect } from 'react-redux'
+import Comments from './Comments'
 
 
 class Post extends Component {
 
 
   componentDidMount(){
-    console.log(this.props.match)
     this.props.dispatch(fetchPost(this.props.match.params.id))
+    this.props.dispatch(fetchComments(this.props.match.params.id))
   }
 
     render(){
-      const { post } = this.props
+      const { post, comments } = this.props
 
         return(
           <div>
@@ -21,6 +22,10 @@ class Post extends Component {
             <h1>{post.title}</h1>
             <h2>{post.body}</h2>
             <h3>{post.author} | {post.voteScore} votes</h3>
+            <h1>Comments</h1>
+            <Comments
+              comments={comments}
+            />
             <Link to="/">Back</Link>
           </div>
         )
@@ -30,7 +35,8 @@ class Post extends Component {
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    post: state.post,
+    comments: state.comments
   }
 }
 

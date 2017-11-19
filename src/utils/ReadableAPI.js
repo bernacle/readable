@@ -66,7 +66,7 @@ export const removePost = (id) =>
 export const getAllComments = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })
     .then(res => res.json())
-    .then(data => data.posts)
+    .then(data => data)
 
 export const addComment = (body) =>
   fetch(`${api}/comments`, {
