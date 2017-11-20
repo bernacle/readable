@@ -20,16 +20,17 @@ const post = (state = {initialState}, action) => {
 
   switch (action.type) {
       case RECEIVE_POST:
-          return {
-            id: action.post.id,
-            timestamp: action.post.timestamp,
-            title: action.post.title,
-            body: action.post.body,
-            author: action.post.author,
-            category: action.post.category,
-            voteScore:action.post.voteScore,
-            deleted: action.post.deleted
-          }
+          return action.post
+          // {
+          //   id: action.post.id,
+          //   timestamp: action.post.timestamp,
+          //   title: action.post.title,
+          //   body: action.post.body,
+          //   author: action.post.author,
+          //   category: action.post.category,
+          //   voteScore:action.post.voteScore,
+          //   deleted: action.post.deleted
+          // }
 
       case VOTE_POST:
           return {

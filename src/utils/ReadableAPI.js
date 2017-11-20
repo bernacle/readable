@@ -45,8 +45,9 @@ export const votePost = (id, option) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(option)
+    body: JSON.stringify({ option })
   }).then(res => res.json())
+    .then(data => data)
 
 export const updatePost = (id, title, body) =>
   fetch(`${api}/posts/${id}`, {

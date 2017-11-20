@@ -95,9 +95,9 @@ export const votePost = post => ({
   post
 })
 
-export const fetchVotePost = (post, option) => dispatch => (
+export const fetchVotePost = (id, option) => dispatch => (
   ReadableAPI
-      .votePost(post.id, option)
+      .votePost(id, option)
       .then(post => dispatch(votePost(post)))
 )
 
