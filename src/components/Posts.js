@@ -8,7 +8,6 @@ class Posts extends Component {
 
         return(
           <div>
-            <h1>HackerNews</h1>
             <ul className='posts'>
               {posts.map((post) => (
                 <li key={post.id}>

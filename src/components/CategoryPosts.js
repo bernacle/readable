@@ -10,7 +10,7 @@ class CategoryPosts extends Component {
         const { posts } = this.props
 
         return(
-          <div className="container">
+          <div>
             <Posts
                 posts={posts.filter((post) => (post.category === this.props.match.params.category))}
             />

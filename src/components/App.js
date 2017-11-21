@@ -23,6 +23,7 @@ componentDidMount(){
 
     return (
       <div className="container">
+        <h1>HackerNews</h1>
         <Route exact path="/" render={() => (
           <div>
             <CategoriesBar
