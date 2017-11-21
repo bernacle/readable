@@ -29,9 +29,7 @@ class Post extends Component {
             <button onClick={() => {this.vote("upVote")}}>Up</button>
             <button onClick={() => {this.vote("downVote")}}>Down</button>
             <h1>Comments</h1>
-            <Comments
-              comments={comments}
-            />
+            <Comments />
             <Link to="/">Back</Link>
           </div>
         )
@@ -41,8 +39,7 @@ class Post extends Component {
 
 function mapStateToProps(state) {
   return {
-    post: state.post,
-    comments: state.comments
+    post: state.post
   }
 }
 

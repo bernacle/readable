@@ -21,17 +21,7 @@ const comment = (state = initialState, action) => {
 
   switch (action.type) {
       case RECEIVE_COMMENT:
-        return {
-          id: action.comment.id,
-          timestamp: action.comment.timestamp,
-          title: action.comment.title,
-          body: action.comment.body,
-          author: action.comment.author,
-          parentId: action.comment.parentId,
-          voteScore:action.comment.voteScore,
-          deleted: action.comment.deleted,
-          parentDeleted: action.comment.parentDeleted
-        }
+        return action.comment
 
       case VOTE_COMMENT:
         return {

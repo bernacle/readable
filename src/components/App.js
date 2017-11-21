@@ -3,6 +3,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 import CategoriesBar from './CategoriesBar'
 import Posts from './Posts'
 import Post from './Post'
+import CategoryPosts from './CategoryPosts'
 import { fetchCategories, fetchPosts } from '../actions'
 import { connect } from 'react-redux'
 import { Route, Link, withRouter } from 'react-router-dom'
@@ -34,6 +35,7 @@ componentDidMount(){
         )}/>
 
         <Route path="/posts/:id" component={Post}/>
+        <Route path="/:category" component= {CategoryPosts}/>
       </div>
 
     )

@@ -140,9 +140,9 @@ export const voteComment = comment => ({
   comment
 })
 
-export const fetchVoteComment = (comment, option) => dispatch => (
+export const fetchVoteComment = (id, option) => dispatch => (
   ReadableAPI
-      .voteComment(comment.id, option)
+      .voteComment(id, option)
       .then(comment => dispatch(voteComment(comment)))
 )
 

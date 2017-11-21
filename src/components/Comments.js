@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Comment from './Comment'
+import { connect } from 'react-redux'
 
 class Comments extends Component {
 
@@ -8,10 +10,10 @@ class Comments extends Component {
         return(
           <div>
           {comments.map((comment) => (
-            <div key={comment.id}>
-              {comment.body} <br/>
-              <span>by {comment.author} | {comment.voteScore} votes <hr/></span>
-            </div>
+            <Comment
+              comment={comment}
+              key={comment.id}
+            />
           ))}
           </div>
         )
@@ -19,4 +21,10 @@ class Comments extends Component {
 
 }
 
-export default Comments
+function mapStateToProps(state) {
+  return {
+    comments: state.comments
+  }
+}
+
+export default connect(mapStateToProps)(Comments)

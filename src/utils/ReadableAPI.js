@@ -82,7 +82,7 @@ export const addComment = (body) =>
 export const getComment = (id) =>
   fetch(`${api}/comments/${id}`, { headers })
     .then(res => res.json())
-    .then(data => data.post)
+    .then(data => data)
 
 export const voteComment = (id, option) =>
   fetch(`${api}/comments/${id}`, {
@@ -91,8 +91,9 @@ export const voteComment = (id, option) =>
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(option)
+    body: JSON.stringify( {option} )
   }).then(res => res.json())
+    .then(data => data)
 
 export const updateComment = (id, timestamp, body) =>
   fetch(`${api}/comments/${id}`, {
