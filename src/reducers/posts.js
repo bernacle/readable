@@ -13,18 +13,7 @@ const posts = (state = initialState, action) => {
           return action.posts
 
       case ADD_POST:
-          return {
-            ...state,
-            posts: state.concat({
-              post: action.post,
-              // id: action.id,
-              // timestamp: action.timestamp,
-              // title: action.title,
-              // body: action.body,
-              // author: action.author,
-              // category: action.category,
-            })
-          }
+          return state.concat(action.post)
 
       default:
           return state

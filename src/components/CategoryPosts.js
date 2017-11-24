@@ -5,7 +5,7 @@ import Posts from './Posts'
 import { fetchPosts, fetchCategoryPosts } from '../actions'
 
 class CategoryPosts extends Component {
-
+    
     render(){
         const { posts } = this.props
 

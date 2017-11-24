@@ -4,9 +4,11 @@ import CategoriesBar from './CategoriesBar'
 import Posts from './Posts'
 import Post from './Post'
 import CategoryPosts from './CategoryPosts'
+import AddPost from './AddPost'
 import { fetchCategories, fetchPosts } from '../actions'
 import { connect } from 'react-redux'
 import { Route, Link, withRouter } from 'react-router-dom'
+
 
 class App extends Component {
 
@@ -32,11 +34,13 @@ componentDidMount(){
             <Posts
                 posts={posts}
             />
+            <Link to="/posts">Add Post</Link>
           </div>
         )}/>
 
         <Route path="/posts/:id" component={Post}/>
-        <Route path="/:category" component= {CategoryPosts}/>
+        <Route path="/category/:category" component= {CategoryPosts}/>
+        <Route exact path="/posts" component={AddPost} />
       </div>
 
     )
