@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uid from 'uid'
 import Posts from './Posts'
@@ -51,14 +51,15 @@ class AddPost extends Component {
                     placeholder='Author'
                     ref={(input) => this.author = input}
             />
-            <input
-                    className='post-input'
-                    required
-                    type='text'
-                    placeholder='Category'
-                    ref={(input) => this.category = input}
-            />
+            <select ref={(input) => this.category = input} className='post-select' required>
+                <option disabled selected value="">Choose a category</option>
+                <option value="react">React</option>
+                <option value="redux">Redux</option>
+                <option value="udacity">Udacity</option>
+            </select>
             <button className="buttonSubmit" onClick={this.addPost}>Add Post</button>
+            <br/>
+            <Link to="/">Back</Link>
           </div>
         )
     }

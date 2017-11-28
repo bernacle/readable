@@ -6,7 +6,6 @@ import { fetchVoteComment, fetchComments } from '../actions'
 class Comments extends Component {
 
   vote = (comment, option) => {
-    //console.log(event)
     this.props.dispatch(fetchVoteComment(comment.id, option))
   }
 

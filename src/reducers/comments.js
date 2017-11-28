@@ -1,6 +1,7 @@
 import {
     RECEIVE_COMMENTS,
-    ADD_COMMENT
+    ADD_COMMENT,
+    VOTE_COMMENT
 } from '../actions'
 
 const initialState = []
@@ -24,6 +25,15 @@ const comments = (state = initialState, action) => {
               // parentId: action.parentId,
             })
           }
+
+      case VOTE_COMMENT:
+          return state.map(comment => {
+            if(comment.id === action.comment.id){
+              return {...comment, ...action.comment}
+            }
+            return comment
+          })
+
       default:
           return state
   }

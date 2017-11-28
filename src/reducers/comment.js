@@ -1,6 +1,5 @@
 import {
     RECEIVE_COMMENT,
-    VOTE_COMMENT,
     EDIT_COMMENT,
     DELETE_COMMENT
 } from '../actions'
@@ -23,11 +22,11 @@ const comment = (state = initialState, action) => {
       case RECEIVE_COMMENT:
         return action.comment
 
-      case VOTE_COMMENT:
-        return {
-          ...state,
-          voteScore: action.comment.voteScore
-        }
+      // case VOTE_COMMENT:
+      //   return {
+      //     ...state,
+      //     voteScore: action.comment.voteScore
+      //   }
 
       case EDIT_COMMENT:
         return {
