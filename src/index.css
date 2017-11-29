@@ -15,6 +15,7 @@ body {
 .posts a {
   color: white;
   margin-bottom: 10px;
+  padding-right: 20px;
 }
 
 h1 {
@@ -99,4 +100,11 @@ span{
     margin-top: 10px;
     height: 40px;
     font-size: 90%;
+}
+
+.edit {
+  color: #00f;
+  text-decoration-color: red;
+  font-style: italic;
+
 }

@@ -5,9 +5,10 @@ import Posts from './Posts'
 import Post from './Post'
 import CategoryPosts from './CategoryPosts'
 import AddPost from './AddPost'
+import EditPost from './EditPost'
 import { fetchCategories, fetchPosts } from '../actions'
 import { connect } from 'react-redux'
-import { Route, Link, withRouter } from 'react-router-dom'
+import { Route, Link, withRouter, Switch } from 'react-router-dom'
 
 
 class App extends Component {
@@ -26,21 +27,24 @@ componentDidMount(){
     return (
       <div className="container">
         <h1>HackerNews</h1>
-        <Route exact path="/" render={() => (
-          <div>
-            <CategoriesBar
-                categories={categories}
-            />
-            <Posts
-                posts={posts}
-            />
-            <Link to="/posts">Add Post</Link>
-          </div>
-        )}/>
+        <Switch>
+          <Route exact path="/" render={() => (
+            <div>
+              <CategoriesBar
+                  categories={categories}
+              />
+              <Posts
+                  posts={posts}
+              />
+              <Link to="/posts">Add Post</Link>
+            </div>
+          )}/>
 
-        <Route path="/posts/:id" component={Post}/>
-        <Route path="/category/:category" component= {CategoryPosts}/>
-        <Route exact path="/posts" component={AddPost} />
+          <Route exact path="/posts/:id" component={Post}/>
+          <Route path="/category/:category" component= {CategoryPosts}/>
+          <Route exact path="/posts" component={AddPost} />
+          <Route path="/posts/:id/edit" component={EditPost}/>
+        </Switch>
       </div>
 
     )
