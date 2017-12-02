@@ -14,17 +14,7 @@ const comments = (state = initialState, action) => {
           return action.comments
 
       case ADD_COMMENT:
-          return {
-            ...state,
-            comments: state.concat({
-              comment: action.comment
-              // id: action.id,
-              // timestamp: action.timestamp,
-              // body: action.body,
-              // author: action.author,
-              // parentId: action.parentId,
-            })
-          }
+          return state.concat(action.comment)
 
       case VOTE_COMMENT:
           return state.map(comment => {
