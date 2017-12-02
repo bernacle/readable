@@ -3,53 +3,78 @@ import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uid from 'uid'
 import Posts from './Posts'
-import { insertPost } from '../actions'
-import { push } from 'react-router-redux'
+import { updatePost } from '../actions'
 import { fetchPost } from '../actions'
+import { push } from 'react-router-redux'
 
 
 class EditPost extends Component {
 
-  update = (e) => {
-
+  state = {
+    title: '',
+    body: ''
   }
 
-  componentDidMount(){
+  handleChange = (e) => {
+    if (e.target.name === 'title'){
+      this.setState({
+        title: e.target.value
+      })
+    } else {
+      this.setState({
+        body: e.target.value
+      })
+    }
+  }
+
+  update = (e) => {
+    if ((this.state.title === this.props.post.title) && (this.state.body === this.props.post.body)){
+      alert('test')
+    } else {
+      let post = {}
+      e.preventDefault()
+      post.id = this.props.match.params.id
+      post.title = this.state.titlex
+      post.body = this.state.body
+      this.props.dispatch(updatePost(post))
+      this.props.history.push('/')
+    }
+  }
+
+  componentWillMount(){
     this.props.dispatch(fetchPost(this.props.match.params.id))
   }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      title: nextProps.post.title,
+      body: nextProps.post.body
+    })
+  }
+
 
     render(){
         return(
           <div className="add">
-            <input
-                    className='post-input'
-                    required
-                    type='text'
-                    value={this.props.post.title}
-                    onChange={this.update}
-                    ref={(input) => this.title = input}
-            />
-            <input
-                    className='post-input'
-                    required
-                    type='text'
-                    value={this.props.post.body}
-                    ref={(input) => this.body = input}
-            />
-            <input
-                    className='post-input'
-                    required
-                    type='text'
-                    value={this.props.post.author}
-                    ref={(input) => this.author = input}
-            />
-            <select ref={(input) => this.category = input} defaultValue={this.props.post.category} className='post-select' required>
-                <option disabled selected value="">Choose a category</option>
-                <option value="react">React</option>
-                <option value="redux">Redux</option>
-                <option value="udacity">Udacity</option>
-            </select>
-            <button className="buttonSubmit" onClick={this.addPost}>Update</button>
+            <form>
+              <input
+                      name='title'
+                      className='post-input'
+                      required
+                      type='text'
+                      value={this.state.title}
+                      onChange={this.handleChange}
+              />
+              <input
+                      name= 'body'
+                      className='post-input'
+                      required
+                      type='text'
+                      value={this.state.body}
+                      onChange={this.handleChange}
+              />
+              <button className="buttonSubmit" onClick={this.update}>Update</button>
+            </form>
             <br/>
             <Link to="/">Back</Link>
           </div>

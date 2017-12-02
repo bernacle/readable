@@ -1,7 +1,6 @@
 import {
     RECEIVE_POST,
     VOTE_POST,
-    EDIT_POST,
     DELETE_POST
 } from '../actions'
 
@@ -38,12 +37,12 @@ const post = (state = {initialState}, action) => {
             voteScore: action.post.voteScore
           }
 
-      case EDIT_POST:
-          return {
-            ...state,
-            title: action.post.title,
-            body: action.post.body
-          }
+      // case EDIT_POST:
+      //     return {
+      //       ...state,
+      //       title: action.post.title,
+      //       body: action.post.body
+      //     }
 
       case DELETE_POST:
           return {

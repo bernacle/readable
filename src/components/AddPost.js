@@ -52,7 +52,7 @@ class AddPost extends Component {
                     ref={(input) => this.author = input}
             />
             <select ref={(input) => this.category = input} className='post-select' required>
-                <option disabled selected value="">Choose a category</option>
+                <option disabled value="">Choose a category</option>
                 <option value="react">React</option>
                 <option value="redux">Redux</option>
                 <option value="udacity">Udacity</option>
