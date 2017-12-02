@@ -34,7 +34,7 @@ class EditPost extends Component {
       let post = {}
       e.preventDefault()
       post.id = this.props.match.params.id
-      post.title = this.state.titlex
+      post.title = this.state.title
       post.body = this.state.body
       this.props.dispatch(updatePost(post))
       this.props.history.push('/')
