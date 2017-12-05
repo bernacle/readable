@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { fetchPost, fetchComments, fetchVotePost } from '../actions'
 import { connect } from 'react-redux'
 import Comments from './Comments'
+import AddComment from './AddComment'
 import Modal from 'react-modal'
 import { insertComment } from '../actions'
 import uid from 'uid'
@@ -11,18 +12,20 @@ import uid from 'uid'
 class Post extends Component {
 
   state = {
-    commentsModalOpen: false
+    commentsModalOpen: false,
+    commentsEditModalOpen: false,
+    commentToEdit: {}
   }
 
-  addComment = (e) => {
+  addComment = (e, body, author) => {
     let comment = {}
-    if (this.body.value && this.author.value){
+    if (body && author){
       e.preventDefault()
       comment.id = uid(10)
       comment.parentId = this.props.match.params.id
       comment.timestamp = Date.now()
-      comment.body = this.body.value
-      comment.author = this.author.value
+      comment.body = body
+      comment.author = author
       this.props.dispatch(insertComment(comment))
       this.setState(() => ({commentsModalOpen: false}))
     } else {
@@ -39,12 +42,15 @@ class Post extends Component {
     this.props.dispatch(fetchVotePost(this.props.post.id, option))
   }
 
+  openEditCommentModal = (comment) => this.setState((comment) => ({commentsEditModalOpen: true, commentToEdit: comment}))
+  closeEditCommentModal = () => this.setState(() => ({commentsEditModalOpen: false}))
+
   openCommentsModal = () => this.setState(() => ({commentsModalOpen: true}))
   closeCommentsModal = () => this.setState(() => ({commentsModalOpen: false}))
 
     render(){
       const { post, comments } = this.props
-      const { commentsModalOpen } = this.state
+      const { commentsModalOpen, commentsEditModalOpen } = this.state
 
         return(
           <div>
@@ -55,7 +61,10 @@ class Post extends Component {
             <button onClick={() => {this.vote("upVote")}}>Up</button>
             <button onClick={() => {this.vote("downVote")}}>Down</button>
             <h1>Comments</h1>
-            <Comments />
+            <Comments
+                    comments={this.props.comments}
+                    onEditCommentModal={this.openEditCommentModal}
+            />
             <button onClick={this.openCommentsModal}>Add Comment</button><br/>
             <Link to="/">Back</Link>
             <Modal
@@ -66,25 +75,20 @@ class Post extends Component {
                     contentLabel='Modal'
             >
             {commentsModalOpen &&
-              <form>
-                <input
-                        className='post-input'
-                        required
-                        type='text'
-                        placeholder='Body'
-                        ref={(input) => this.body = input}
-                />
-                <input
-                        className='post-input'
-                        required
-                        type='text'
-                        placeholder='Author'
-                        ref={(input) => this.author = input}
-                />
-                <button className="buttonSubmit" onClick={this.addComment}>Submit</button>
-                <button className="buttonSubmit" onClick={this.closeCommentsModal}>Close</button>
-              </form>
+              <AddComment
+                onAddComment={this.addComment}
+                onCloseModal={this.closeCommentsModal}
+              />
             }
+            </Modal>
+            <Modal
+                    className='modal'
+                    overlayClassName='overlay'
+                    isOpen={commentsEditModalOpen}
+                    onRequestClose={this.closeEditCommentModal}
+                    contentLabel='Modal'
+            >
+            
             </Modal>
           </div>
         )
@@ -94,7 +98,8 @@ class Post extends Component {
 
 function mapStateToProps(state) {
   return {
-    post: state.post
+    post: state.post,
+    comments: state.comments
   }
 }
 
