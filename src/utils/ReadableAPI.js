@@ -62,7 +62,7 @@ export const updatePost = (id, title, body) =>
 export const removePost = (id) =>
   fetch(`${api}/posts/${id}`, { method: 'DELETE', headers })
     .then(res => res.json())
-    .then(data => data.post)
+    .then(data => data)
 
 export const getAllComments = (postId) =>
   fetch(`${api}/posts/${postId}/comments`, { headers })

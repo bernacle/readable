@@ -37,6 +37,7 @@ const post = (state = {initialState}, action) => {
             voteScore: action.post.voteScore
           }
 
+      
       case DELETE_POST:
           return {
             ...state,

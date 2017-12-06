@@ -6,6 +6,7 @@ import Post from './Post'
 import CategoryPosts from './CategoryPosts'
 import AddPost from './AddPost'
 import EditPost from './EditPost'
+import RemovePost from './RemovePost'
 import { fetchCategories, fetchPosts } from '../actions'
 import { connect } from 'react-redux'
 import { Route, Link, withRouter, Switch } from 'react-router-dom'
@@ -44,6 +45,7 @@ componentDidMount(){
           <Route path="/category/:category" component= {CategoryPosts}/>
           <Route exact path="/posts" component={AddPost} />
           <Route path="/posts/:id/edit" component={EditPost}/>
+          <Route path="/posts/:id/remove" component={RemovePost}/>
         </Switch>
       </div>
 

@@ -13,8 +13,8 @@ class Posts extends Component {
                 <li key={post.id}>
                   <Link to={`/posts/${post.id}`}>{post.title}</Link>
                   <Link className='edit' to={`/posts/${post.id}/edit`}>Edit</Link>
+                  <Link className='edit' to={`/posts/${post.id}/remove`}>Remove</Link>
                 </li>
-
               ))}
             </ul>
           </div>

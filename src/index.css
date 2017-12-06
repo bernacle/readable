@@ -102,6 +102,23 @@ span{
     font-size: 90%;
 }
 
+label {
+  color: white;
+}
+
+.buttonRemove {
+    width: 53%;
+    padding: 10px;
+    background: #ff6666;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 90%;
+}
+
 .edit {
   color: #00f;
   text-decoration-color: red;
