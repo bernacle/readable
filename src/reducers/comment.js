@@ -1,6 +1,5 @@
 import {
     RECEIVE_COMMENT,
-    EDIT_COMMENT,
     DELETE_COMMENT
 } from '../actions'
 
@@ -28,12 +27,12 @@ const comment = (state = initialState, action) => {
       //     voteScore: action.comment.voteScore
       //   }
 
-      case EDIT_COMMENT:
-        return {
-          ...state,
-          timestamp: action.comment.timestamp,
-          body: action.comment.body
-        }
+      // case EDIT_COMMENT:
+      //   return {
+      //     ...state,
+      //     timestamp: action.comment.timestamp,
+      //     body: action.comment.body
+      //   }
 
       case DELETE_COMMENT:
         return {

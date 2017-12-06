@@ -4,8 +4,9 @@ import { fetchPost, fetchComments, fetchVotePost } from '../actions'
 import { connect } from 'react-redux'
 import Comments from './Comments'
 import AddComment from './AddComment'
+import EditComment from './EditComment'
 import Modal from 'react-modal'
-import { insertComment } from '../actions'
+import { insertComment, updateComment } from '../actions'
 import uid from 'uid'
 
 
@@ -14,7 +15,7 @@ class Post extends Component {
   state = {
     commentsModalOpen: false,
     commentsEditModalOpen: false,
-    commentToEdit: {}
+    commentToEdit: null
   }
 
   addComment = (e, body, author) => {
@@ -33,6 +34,16 @@ class Post extends Component {
     }
 }
 
+  editComment = (e, body, id) => {
+    let comment = {}
+    e.preventDefault
+    comment.id = id
+    comment.timestamp = Date.now()
+    comment.body = body
+    this.props.dispatch(updateComment(comment))
+    this.setState(() => ({commentsEditModalOpen: false}))
+  }
+
   componentDidMount(){
     this.props.dispatch(fetchPost(this.props.match.params.id))
     this.props.dispatch(fetchComments(this.props.match.params.id))
@@ -42,7 +53,12 @@ class Post extends Component {
     this.props.dispatch(fetchVotePost(this.props.post.id, option))
   }
 
-  openEditCommentModal = (comment) => this.setState((comment) => ({commentsEditModalOpen: true, commentToEdit: comment}))
+  openEditCommentModal = (comment) => {
+    this.setState({
+      commentsEditModalOpen: true,
+      commentToEdit: comment
+    })
+  }
   closeEditCommentModal = () => this.setState(() => ({commentsEditModalOpen: false}))
 
   openCommentsModal = () => this.setState(() => ({commentsModalOpen: true}))
@@ -88,7 +104,13 @@ class Post extends Component {
                     onRequestClose={this.closeEditCommentModal}
                     contentLabel='Modal'
             >
-            
+            {commentsEditModalOpen &&
+              <EditComment
+                onEditComment={this.editComment}
+                onCloseModal={this.closeEditCommentModal}
+                comment={this.state.commentToEdit}
+              />
+            }
             </Modal>
           </div>
         )

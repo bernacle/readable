@@ -1,7 +1,8 @@
 import {
     RECEIVE_COMMENTS,
     ADD_COMMENT,
-    VOTE_COMMENT
+    VOTE_COMMENT,
+    EDIT_COMMENT
 } from '../actions'
 
 const initialState = []
@@ -17,6 +18,14 @@ const comments = (state = initialState, action) => {
           return state.concat(action.comment)
 
       case VOTE_COMMENT:
+          return state.map(comment => {
+            if(comment.id === action.comment.id){
+              return {...comment, ...action.comment}
+            }
+            return comment
+          })
+
+      case EDIT_COMMENT:
           return state.map(comment => {
             if(comment.id === action.comment.id){
               return {...comment, ...action.comment}

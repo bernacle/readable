@@ -27,14 +27,6 @@ class AddComment extends Component {
       }
     }
 
-    componentWillReceiveProps(nextProps){
-      this.setState({
-        body: nextProps.comment.body,
-        author: nextProps.comment.author
-      })
-    }
-
-
     render(){
         return(
           <form>

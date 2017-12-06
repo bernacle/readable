@@ -29,7 +29,7 @@ class EditPost extends Component {
 
   update = (e) => {
     if ((this.state.title === this.props.post.title) && (this.state.body === this.props.post.body)){
-      alert('test')
+      alert('Fix This! TODO')
     } else {
       let post = {}
       e.preventDefault()
