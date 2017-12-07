@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchPost, fetchComments, fetchVotePost } from '../actions'
+import { fetchPost, fetchComments, fetchVotePost, fetchAllComments } from '../actions'
 import { connect } from 'react-redux'
 import Comments from './Comments'
 import AddComment from './AddComment'
 import EditComment from './EditComment'
 import Modal from 'react-modal'
-import { insertComment, updateComment } from '../actions'
+import { insertComment, updateComment, fetchPosts } from '../actions'
 import uid from 'uid'
 
 
@@ -78,7 +78,7 @@ class Post extends Component {
             <button onClick={() => {this.vote("downVote")}}>Down</button>
             <h1>Comments</h1>
             <Comments
-                    comments={this.props.comments}
+                    comments={this.props.comments.filter(comment => comment.deleted === false)}
                     onEditCommentModal={this.openEditCommentModal}
             />
             <button onClick={this.openCommentsModal}>Add Comment</button><br/>

@@ -4,6 +4,7 @@ import posts from './posts'
 import comments from './comments'
 import post from './post'
 import comment from './comment'
+import list_comments from './list_comments'
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
     posts,
     comments,
     post,
-    comment
+    comment,
+    list_comments
 });
 
 export default rootReducer

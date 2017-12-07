@@ -1,7 +1,8 @@
 import {
     RECEIVE_POSTS,
     ADD_POST,
-    EDIT_POST
+    EDIT_POST,
+    VOTE_POSTS
 } from '../actions'
 
 const initialState = []
@@ -23,6 +24,14 @@ const posts = (state = initialState, action) => {
             }
             return post
           })
+
+        case VOTE_POSTS:
+            return state.map(post => {
+              if(post.id === action.post.id){
+                return {...post, ...action.post}
+              }
+              return post
+            })
 
       default:
           return state

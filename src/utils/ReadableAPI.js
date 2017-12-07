@@ -108,4 +108,4 @@ export const updateComment = (id, timestamp, body) =>
 export const removeComment= (id) =>
   fetch(`${api}/comments/${id}`, { method: 'DELETE', headers })
     .then(res => res.json())
-    .then(data => data.post)
+    .then(data => data)

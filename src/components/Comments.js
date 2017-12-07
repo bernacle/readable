@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchVoteComment, fetchComments } from '../actions'
+import { fetchVoteComment, fetchComments, removeComment } from '../actions'
 
 class Comments extends Component {
 
@@ -10,6 +10,10 @@ class Comments extends Component {
 
   handleEdit = (comment) => {
     this.props.onEditCommentModal(comment)
+  }
+
+  remove = (comment) => {
+    this.props.dispatch(removeComment(comment, comment.parentId))
   }
 
     render(){
@@ -24,7 +28,8 @@ class Comments extends Component {
               <span>by {comment.author} | {comment.voteScore} votes</span>
               <button onClick={() => {this.vote(comment, "upVote")}}>Up</button>
               <button onClick={() => {this.vote(comment, "downVote")}}>Down</button>
-              <button onClick={() => {this.handleEdit(comment)}}>Edit</button><hr/>
+              <button onClick={() => {this.handleEdit(comment)}}>Edit</button>
+              <button onClick={() => {this.remove(comment)}}>Remove</button><hr/>
             </div>
           ))}
           </div>

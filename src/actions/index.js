@@ -7,12 +7,16 @@ export const ADD_POST ='ADD_POST'
 export const EDIT_POST = 'EDIT_POST'
 export const DELETE_POST = 'DELETE_POST'
 export const VOTE_POST = 'VOTE_POST'
+export const VOTE_POSTS = 'VOTE_POSTS'
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
+export const ADD_TO_LIST_COMMENTS = 'ADD_TO_LIST_COMMENTS'
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT'
 export const VOTE_COMMENT = 'VOTE_COMMENT'
-export const EDIT_COMMENT = 'EDIT_COMME NT'
+export const EDIT_COMMENT = 'EDIT_COMMENTS'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
+export const DELETE_FROM_LIST_COMMENTS = 'DELETE_FROM_LIST_COMMENTS'
+export const LIST_COMMENTS = 'LIST_COMMENTS'
 
 export const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
@@ -32,7 +36,6 @@ export const receivePosts = posts => ({
 })
 
 export const fetchPosts = () => dispatch => (
-   //async call to api, and if ok dispatch receive action
    ReadableAPI
       .getAllPosts()
       .then(posts => dispatch(receivePosts(posts)))
@@ -95,10 +98,19 @@ export const votePost = post => ({
   post
 })
 
+
+export const votePosts = post => ({
+  type: VOTE_POSTS,
+  post
+})
+
 export const fetchVotePost = (id, option) => dispatch => (
   ReadableAPI
       .votePost(id, option)
-      .then(post => dispatch(votePost(post)))
+      .then((post) => {
+        dispatch(votePost(post))
+        dispatch(votePosts(post))
+      })
 )
 
 export const receiveComments = comments => ({
@@ -112,15 +124,29 @@ export const fetchComments = (id) => dispatch => (
       .then(comments => dispatch(receiveComments(comments)))
 )
 
+export const addListComments = (post) => dispatch => (
+  ReadableAPI
+      .getAllComments(post.id)
+      .then(comments => dispatch(listComments(comments, post)))
+)
+
 export const addComment = comment => ({
   type: ADD_COMMENT,
+  comment
+})
+
+export const addToListComments = comment => ({
+  type: ADD_TO_LIST_COMMENTS,
   comment
 })
 
 export const insertComment = (comment) => dispatch => (
   ReadableAPI
       .addComment(comment)
-      .then(comment => dispatch(addComment(comment)))
+      .then((comment) => {
+        dispatch(addComment(comment))
+        dispatch(addToListComments(comment))
+      })
 )
 
 export const receiveComment = comment => ({
@@ -151,19 +177,47 @@ export const editComment = comment => ({
   comment
 })
 
+export const listComments = (comments, post) => ({
+  type: LIST_COMMENTS,
+  comments,
+  post
+})
+
+export const fetchAllComments = () => dispatch => (
+  ReadableAPI
+      .getAllPosts()
+      .then(posts => dispatch(fetchListComments(posts)))
+)
+
+export const fetchListComments = (posts) => dispatch => (
+  posts.map((post) => {
+    ReadableAPI
+        .getAllComments(post.id)
+        .then(comment => dispatch(addListComments(post)))
+  })
+)
+
 export const updateComment = (comment) => dispatch => (
   ReadableAPI
       .updateComment(comment.id, comment.timestamp, comment.body)
       .then(comment => dispatch(editComment(comment)))
 )
 
-export const deleteComment = comment => ({
+export const deleteComment = (comment) => ({
   type: DELETE_COMMENT,
+  comment
+})
+
+export const deleteFromListComments = (comment) => ({
+  type: DELETE_FROM_LIST_COMMENTS,
   comment
 })
 
 export const removeComment = (comment) => dispatch => (
   ReadableAPI
       .removeComment(comment.id)
-      .then(comment => dispatch(deleteComment(comment)))
+      .then((comment) => {
+        dispatch(deleteComment(comment))
+        dispatch(deleteFromListComments(comment))
+      })
 )

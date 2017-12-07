@@ -7,7 +7,7 @@ import CategoryPosts from './CategoryPosts'
 import AddPost from './AddPost'
 import EditPost from './EditPost'
 import RemovePost from './RemovePost'
-import { fetchCategories, fetchPosts } from '../actions'
+import { fetchCategories, fetchPosts, fetchAllComments} from '../actions'
 import { connect } from 'react-redux'
 import { Route, Link, withRouter, Switch } from 'react-router-dom'
 
@@ -17,13 +17,13 @@ class App extends Component {
 componentDidMount(){
   this.props.dispatch(fetchCategories())
   this.props.dispatch(fetchPosts())
+  this.props.dispatch(fetchAllComments())
 }
 
-// <Route path="/posts/:id" component={Post}/>
 
   render() {
 
-    const { categories, posts} = this.props
+    const { categories, posts, list_comments} = this.props
 
     return (
       <div className="container">
@@ -36,6 +36,7 @@ componentDidMount(){
               />
               <Posts
                   posts={posts}
+                  list_comments={list_comments}
               />
               <Link to="/posts">Add Post</Link>
             </div>
@@ -56,7 +57,8 @@ componentDidMount(){
 function mapStateToProps(state) {
   return {
     categories: state.categories,
-    posts: state.posts
+    posts: state.posts,
+    list_comments: state.list_comments
   }
 }
 
