@@ -39,7 +39,7 @@ class EditComment extends Component {
                     onChange={this.handleChange}
             />
             <button className="buttonSubmit" onClick={this.handleEdit}>Update</button>
-            <button className="buttonSubmit" onClick={this.handleModalClose}>Close</button>
+            <button className="buttonClose" onClick={this.handleModalClose}>Close</button>
           </form>
         )
     }

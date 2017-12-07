@@ -49,7 +49,7 @@ class AddComment extends Component {
                     onChange={this.handleChange}
             />
             <button className="buttonSubmit" onClick={this.handleAdd}>Submit</button>
-            <button className="buttonSubmit" onClick={this.handleModalClose}>Close</button>
+            <button className="buttonClose" onClick={this.handleModalClose}>Close</button>
           </form>
         )
     }

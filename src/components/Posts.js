@@ -22,8 +22,8 @@ class Posts extends Component {
                   <Link className='edit' to={`/posts/${post.id}/remove`}>Remove</Link> <br/>
                   <span>by {post.author} | {post.voteScore} votes </span>
                   <span>| {list_comments.filter(comment => comment.parentId === post.id).length} comments</span>
-                  <button onClick={() => {this.vote(post, "upVote")}}>Up</button>
-                  <button onClick={() => {this.vote(post, "downVote")}}>Down</button>
+                  <button className="buttonVote" onClick={() => {this.vote(post, "upVote")}}>Up</button>
+                  <button className="buttonVote" onClick={() => {this.vote(post, "downVote")}}>Down</button>
                 </li>
               ))}
             </ul>

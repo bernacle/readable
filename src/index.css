@@ -13,13 +13,13 @@ body {
 }
 
 .posts a {
-  color: white;
+  color: black;
   margin-bottom: 10px;
   padding-right: 20px;
 }
 
 h1 {
-  color: white;
+  color: black;
 }
 
 .categories {
@@ -46,7 +46,7 @@ h1 {
   max-width: 1070px;
   padding: 20px;
   min-width: 1070px;
-  background-color: #9DC8C8;
+  background-color: white;
 }
 
 .bars {
@@ -54,7 +54,7 @@ h1 {
 }
 
 span{
-  color: white;
+  color: black;
 }
 
 .post-input {
@@ -103,6 +103,43 @@ span{
     margin-top: 10px;
     height: 40px;
     font-size: 90%;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.buttonClose {
+    width: 53%;
+    padding: 10px;
+    background: #FFF;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 90%;
+    background-color: grey;
+    color: white;
+}
+
+.buttonVote {
+  background: #42adf4;
+  color: white;
+}
+
+.buttonAdd {
+  background: #5fce86;
+  color: white;
+}
+
+.buttonEditC {
+  background: #dbb323;
+  color: white;
+}
+
+.buttonRemoveC {
+  background: #ff6666;
+  color: white;
 }
 
 label {
@@ -113,6 +150,7 @@ label {
     width: 53%;
     padding: 10px;
     background: #ff6666;
+    color: white;
     border:0 none;
     cursor:pointer;
     -webkit-border-radius: 5px;
@@ -145,7 +183,7 @@ label {
   right: 200px;
   bottom: 40px;
   border: 1px solid rgb(204, 204, 204);
-  background: #9DC8C8;
+  background: white;
   overflow: auto;
   border-radius: 4px;
   outline: none;

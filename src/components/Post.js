@@ -81,7 +81,7 @@ class Post extends Component {
                     comments={this.props.comments.filter(comment => comment.deleted === false)}
                     onEditCommentModal={this.openEditCommentModal}
             />
-            <button onClick={this.openCommentsModal}>Add Comment</button><br/>
+            <button className="buttonAdd" onClick={this.openCommentsModal}>Add Comment</button><br/>
             <Link to="/">Back</Link>
             <Modal
                     className='modal'
