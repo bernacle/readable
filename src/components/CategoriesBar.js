@@ -20,7 +20,7 @@ handleClick = (event) => {
           <nav>
             <ul className='categories'>
                <select value={option} onChange={this.handleClick} className='post-select-small'>
-                  <option key="all" value="all">All</option>
+                  <option key="all" value="all">Categories</option>
                   {categories.map((category) => (
                     <option key={category.name} value={category.name}>{category.name}</option>
                   ))}

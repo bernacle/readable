@@ -2,8 +2,11 @@ import {
     RECEIVE_POSTS,
     ADD_POST,
     EDIT_POST,
-    VOTE_POSTS
+    VOTE_POSTS,
+    SORT_POSTS
 } from '../actions'
+
+import sortBy from 'sort-by'
 
 const initialState = []
 
@@ -32,6 +35,9 @@ const posts = (state = initialState, action) => {
               }
               return post
             })
+
+        case SORT_POSTS:
+              return state.slice().sort(sortBy(action.option))
 
       default:
           return state

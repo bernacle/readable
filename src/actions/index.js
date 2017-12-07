@@ -17,6 +17,7 @@ export const EDIT_COMMENT = 'EDIT_COMMENTS'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const DELETE_FROM_LIST_COMMENTS = 'DELETE_FROM_LIST_COMMENTS'
 export const LIST_COMMENTS = 'LIST_COMMENTS'
+export const SORT_POSTS = 'SORT_POSTS'
 
 export const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
@@ -221,3 +222,8 @@ export const removeComment = (comment) => dispatch => (
         dispatch(deleteFromListComments(comment))
       })
 )
+
+export const sortPosts = (option) => ({
+  type: SORT_POSTS,
+  option
+})

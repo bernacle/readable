@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as ReadableAPI from '../utils/ReadableAPI'
 import CategoriesBar from './CategoriesBar'
+import SortByBar from './SortByBar'
 import Posts from './Posts'
 import Post from './Post'
 import CategoryPosts from './CategoryPosts'
@@ -31,9 +32,15 @@ componentDidMount(){
         <Switch>
           <Route exact path="/" render={() => (
             <div>
-              <CategoriesBar
-                  categories={categories}
-              />
+
+              <div className="bars">
+                <CategoriesBar
+                    categories={categories}
+                />
+
+                <SortByBar />
+              </div>
+
               <Posts
                   posts={posts}
                   list_comments={list_comments}
