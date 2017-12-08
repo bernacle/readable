@@ -16,14 +16,15 @@ class Posts extends Component {
           <div>
             <ul className='posts'>
               {posts.map((post) => (
-                <li key={post.id}>
-                  <Link to={`/posts/${post.id}`}>{post.title}</Link>
-                  <Link className='edit' to={`/posts/${post.id}/edit`}>Edit</Link>
-                  <Link className='edit' to={`/posts/${post.id}/remove`}>Remove</Link> <br/>
+                <li key={post.id} className="post">
+                  <hr/>
+                  <Link className="postLink" to={`/posts/${post.id}`}>{post.title}</Link> <br/>
                   <span>by {post.author} | {post.voteScore} votes </span>
-                  <span>| {list_comments.filter(comment => comment.parentId === post.id).length} comments</span>
-                  <button className="buttonVote" onClick={() => {this.vote(post, "upVote")}}>Up</button>
-                  <button className="buttonVote" onClick={() => {this.vote(post, "downVote")}}>Down</button>
+                  <span>| {list_comments.filter(comment => comment.parentId === post.id).length} comments</span> <br/>
+                    <a href='#' className="likeabutton voteLink" onClick={() => {this.vote(post, "upVote")}}>Up</a>
+                    <a href='#' className="likeabutton voteLink" onClick={() => {this.vote(post, "downVote")}}>Down</a>
+                    <Link className='likeabutton editLink' to={`/posts/${post.id}/edit`}>Edit</Link>
+                    <Link className='likeabutton removeLink' to={`/posts/${post.id}/remove`}>Remove</Link>
                 </li>
               ))}
             </ul>

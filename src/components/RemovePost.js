@@ -22,11 +22,11 @@ class EditPost extends Component {
     render(){
         return(
           <div className="add">
-            <h1 class="removePostTitle">{this.props.post.title}</h1>
+            <h1 class="removePostTitle"><span>{this.props.post.title}</span></h1>
             <label>If you hit the button, you will delete the post and all the comments in it. Ready?</label>
             <button className="buttonRemove" onClick={this.remove}>Remove Post</button>
             <br/>
-            <Link to="/">Quit</Link>
+            <Link className='likeabutton defaultLink' to="/">Quit</Link>
           </div>
         )
     }

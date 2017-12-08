@@ -29,7 +29,7 @@ class AddComment extends Component {
 
     render(){
         return(
-          <form>
+          <form className="center-things">
             <input
                     name='body'
                     className='post-input'

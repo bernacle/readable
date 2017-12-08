@@ -70,19 +70,19 @@ class Post extends Component {
 
         return(
           <div>
-            <p>{post.category}</p>
-            <h1>{post.title}</h1>
+            <span className='category'>{post.category}</span>
+            <h1><span>{post.title}</span></h1>
             <h2>{post.body}</h2>
-            <h3>{post.author} | {post.voteScore} votes</h3>
-            <button onClick={() => {this.vote("upVote")}}>Up</button>
-            <button onClick={() => {this.vote("downVote")}}>Down</button>
-            <h1>Comments</h1>
+            <h3>by {post.author} | {post.voteScore} votes</h3>
+            <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("upVote")}}>Up</a>
+            <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("downVote")}}>Down</a>
+            <h1><span>Comments</span></h1>
             <Comments
                     comments={this.props.comments.filter(comment => comment.deleted === false)}
                     onEditCommentModal={this.openEditCommentModal}
             />
-            <button className="buttonAdd" onClick={this.openCommentsModal}>Add Comment</button><br/>
-            <Link to="/">Back</Link>
+            <a href='#'className="likeabutton addLink" onClick={this.openCommentsModal}>Add Comment</a><br/>
+            <Link className='likeabutton defaultLink'  to="/">Back</Link>
             <Modal
                     className='modal'
                     overlayClassName='overlay'

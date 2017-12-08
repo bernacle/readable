@@ -59,7 +59,7 @@ class AddPost extends Component {
             </select>
             <button className="buttonSubmit" onClick={this.addPost}>Add Post</button>
             <br/>
-            <Link to="/">Back</Link>
+            <Link className="likeabutton defaultLink" to="/">Back</Link>
           </div>
         )
     }

@@ -26,10 +26,13 @@ class Comments extends Component {
             <div key={comment.id}>
               {comment.body} <br/>
               <span>by {comment.author} | {comment.voteScore} votes</span>
-              <button className="buttonVote" onClick={() => {this.vote(comment, "upVote")}}>Up</button>
-              <button className="buttonVote" onClick={() => {this.vote(comment, "downVote")}}>Down</button>
-              <button className="buttonEditC" onClick={() => {this.handleEdit(comment)}}>Edit</button>
-              <button className="buttonRemoveC"onClick={() => {this.remove(comment)}}>Remove</button><hr/>
+              <div className="float-right">
+                <a href='#' className="likeabutton voteLink" onClick={() => {this.vote(comment, "upVote")}}>Up</a>
+                <a href='#' className="likeabutton voteLink" onClick={() => {this.vote(comment, "downVote")}}>Down</a>
+                <a href='#' className="likeabutton editLink" onClick={() => {this.handleEdit(comment)}}>Edit</a>
+                <a href='#' className="likeabutton removeLink"  onClick={() => {this.remove(comment)}}>Remove</a>
+              </div>
+              <hr/>
             </div>
           ))}
           </div>

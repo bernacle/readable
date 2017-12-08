@@ -27,34 +27,36 @@ componentDidMount(){
     const { categories, posts, list_comments} = this.props
 
     return (
-      <div className="container">
-        <h1>HackerNews</h1>
-        <Switch>
-          <Route exact path="/" render={() => (
-            <div>
+      <div className="container center">
+        <div className="center-things">
+          <h1><span>HackerNews</span></h1>
+          <Switch>
+            <Route exact path="/" render={() => (
+              <div>
 
-              <div className="bars">
-                <CategoriesBar
-                    categories={categories}
+                <div className="bars">
+                  <CategoriesBar
+                      categories={categories}
+                  />
+
+                  <SortByBar />
+                </div>
+
+                <Posts
+                    posts={posts}
+                    list_comments={list_comments}
                 />
-
-                <SortByBar />
+                <Link className="likeabutton addLink" to="/posts">Add Post</Link>
               </div>
+            )}/>
 
-              <Posts
-                  posts={posts}
-                  list_comments={list_comments}
-              />
-              <Link to="/posts">Add Post</Link>
-            </div>
-          )}/>
-
-          <Route exact path="/posts/:id" component={Post}/>
-          <Route path="/category/:category" component= {CategoryPosts}/>
-          <Route exact path="/posts" component={AddPost} />
-          <Route path="/posts/:id/edit" component={EditPost}/>
-          <Route path="/posts/:id/remove" component={RemovePost}/>
-        </Switch>
+            <Route exact path="/posts/:id" component={Post}/>
+            <Route path="/category/:category" component= {CategoryPosts}/>
+            <Route exact path="/posts" component={AddPost} />
+            <Route path="/posts/:id/edit" component={EditPost}/>
+            <Route path="/posts/:id/remove" component={RemovePost}/>
+          </Switch>
+        </div>
       </div>
 
     )
