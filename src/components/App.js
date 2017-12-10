@@ -35,7 +35,7 @@ componentDidMount(){
 
                 <div className="bars">
                   <CategoriesBar
-                      categories={categories}
+                    categories={categories}
                   />
 
                   <SortByBar />

@@ -10,6 +10,7 @@ class CategoryPosts extends Component {
 
         return(
           <div>
+
             <Posts
                 posts={posts.filter((post) => (post.category === this.props.match.params.category))}
                 list_comments={list_comments}

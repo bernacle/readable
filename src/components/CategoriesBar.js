@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCategoryPosts, fetchPosts } from '../actions'
 
 class CategoriesBar extends Component {
 
 handleClick = (event) => {
   if (event.target.value === "all"){
-    this.props.dispatch(fetchPosts(event.target.value))
+    window.location = '/'
   } else {
-    this.props.dispatch(fetchCategoryPosts(event.target.value))
+    window.location = event.target.value
   }
 
 }
@@ -20,7 +19,7 @@ handleClick = (event) => {
           <nav>
             <ul className='categories'>
                <select value={option} onChange={this.handleClick} className='post-select-small'>
-                  <option key="all" value="all">Categories</option>
+                  <option key="all" value="all">All Categories</option>
                   {categories.map((category) => (
                     <option key={category.name} value={category.name}>{category.name}</option>
                   ))}
