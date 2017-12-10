@@ -70,51 +70,60 @@ class Post extends Component {
 
         return(
           <div>
-            <span className='category'>{post.category}</span>
-            <h1><span>{post.title}</span></h1>
-            <h2>{post.body}</h2>
-            <h3>by {post.author} | {post.voteScore} votes</h3>
-            <h3>{list_comments.filter(comment => comment.parentId === post.id).length} comments</h3>
-            <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("upVote")}}>Up</a>
-            <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("downVote")}}>Down</a>
-            <Link className='likeabutton editLink' to={`/posts/${post.id}/edit`}>Edit</Link>
-            <Link className='likeabutton removeLink' to={`/posts/${post.id}/remove`}>Remove</Link>
-            <h1><span>Comments</span></h1>
-            <Comments
-                    comments={this.props.comments.filter(comment => comment.deleted === false)}
-                    onEditCommentModal={this.openEditCommentModal}
-            />
-            <a href='#'className="likeabutton addLink" onClick={this.openCommentsModal}>Add Comment</a><br/>
-            <Link className='likeabutton defaultLink'  to="/">Back</Link>
-            <Modal
-                    className='modal'
-                    overlayClassName='overlay'
-                    isOpen={commentsModalOpen}
-                    onRequestClose={this.closeCommentsModal}
-                    contentLabel='Modal'
-            >
-            {commentsModalOpen &&
-              <AddComment
-                onAddComment={this.addComment}
-                onCloseModal={this.closeCommentsModal}
-              />
+            {post.deleted === false ?
+              <div>
+                <span className='category'>{post.category}</span>
+                <h1><span>{post.title}</span></h1>
+                <h2>{post.body}</h2>
+                <h3>by {post.author} | {post.voteScore} votes</h3>
+                <h3>{list_comments.filter(comment => comment.parentId === post.id).length} comments</h3>
+                <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("upVote")}}>Up</a>
+                <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("downVote")}}>Down</a>
+                <Link className='likeabutton editLink' to={`/posts/${post.id}/edit`}>Edit</Link>
+                <Link className='likeabutton removeLink' to={`/posts/${post.id}/remove`}>Remove</Link>
+                <h1><span>Comments</span></h1>
+                <Comments
+                        comments={this.props.comments.filter(comment => comment.deleted === false)}
+                        onEditCommentModal={this.openEditCommentModal}
+                />
+                <a href='#'className="likeabutton addLink" onClick={this.openCommentsModal}>Add Comment</a><br/>
+                <Link className='likeabutton defaultLink'  to="/">Back</Link>
+                <Modal
+                        className='modal'
+                        overlayClassName='overlay'
+                        isOpen={commentsModalOpen}
+                        onRequestClose={this.closeCommentsModal}
+                        contentLabel='Modal'
+                >
+                {commentsModalOpen &&
+                  <AddComment
+                    onAddComment={this.addComment}
+                    onCloseModal={this.closeCommentsModal}
+                  />
+                }
+                </Modal>
+                <Modal
+                        className='modal'
+                        overlayClassName='overlay'
+                        isOpen={commentsEditModalOpen}
+                        onRequestClose={this.closeEditCommentModal}
+                        contentLabel='Modal'
+                >
+                {commentsEditModalOpen &&
+                  <EditComment
+                    onEditComment={this.editComment}
+                    onCloseModal={this.closeEditCommentModal}
+                    comment={this.state.commentToEdit}
+                  />
+                }
+                </Modal>
+              </div>
+            :
+              <div>
+                <h2>This content is unavailable</h2>
+                <Link className="likeabutton defaultLink" to="/">Back</Link>
+              </div>
             }
-            </Modal>
-            <Modal
-                    className='modal'
-                    overlayClassName='overlay'
-                    isOpen={commentsEditModalOpen}
-                    onRequestClose={this.closeEditCommentModal}
-                    contentLabel='Modal'
-            >
-            {commentsEditModalOpen &&
-              <EditComment
-                onEditComment={this.editComment}
-                onCloseModal={this.closeEditCommentModal}
-                comment={this.state.commentToEdit}
-              />
-            }
-            </Modal>
           </div>
         )
     }

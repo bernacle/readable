@@ -77,7 +77,7 @@ class EditPost extends Component {
               <button className="buttonEdit" onClick={this.update}>Update</button>
             </form>
             <br/>
-            <Link to="/">Back</Link>
+            <Link className="likeabutton defaultLink" to="/">Back</Link>
           </div>
         )
     }
