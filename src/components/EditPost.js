@@ -56,6 +56,7 @@ class EditPost extends Component {
     render(){
         return(
           <div className="add">
+            <h2 className="editLink">Edit Post</h2>
             <form>
               <input
                       name='title'
@@ -73,7 +74,7 @@ class EditPost extends Component {
                       value={this.state.body}
                       onChange={this.handleChange}
               />
-              <button className="buttonSubmit" onClick={this.update}>Update</button>
+              <button className="buttonEdit" onClick={this.update}>Update</button>
             </form>
             <br/>
             <Link to="/">Back</Link>

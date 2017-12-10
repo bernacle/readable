@@ -30,6 +30,7 @@ class AddPost extends Component {
     render(){
         return(
           <div className="add">
+            <h2 className="addLink">Add Post</h2>
             <input
                     className='post-input'
                     required

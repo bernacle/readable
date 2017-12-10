@@ -18,7 +18,7 @@ class Posts extends Component {
               {posts.map((post) => (
                 <li key={post.id} className="post">
                   <hr/>
-                  <Link className="postLink" to={`/posts/${post.id}`}>{post.title}</Link> <br/>
+                  <Link className="postLink" to={`/${post.category}/${post.id}`}>{post.title}</Link> <br/>
                   <span>by {post.author} | {post.voteScore} votes </span>
                   <span>| {list_comments.filter(comment => comment.parentId === post.id).length} comments</span> <br/>
                     <a href='#' className="likeabutton voteLink" onClick={() => {this.vote(post, "upVote")}}>Up</a>

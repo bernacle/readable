@@ -65,7 +65,7 @@ class Post extends Component {
   closeCommentsModal = () => this.setState(() => ({commentsModalOpen: false}))
 
     render(){
-      const { post, comments } = this.props
+      const { post, comments, list_comments } = this.props
       const { commentsModalOpen, commentsEditModalOpen } = this.state
 
         return(
@@ -74,8 +74,11 @@ class Post extends Component {
             <h1><span>{post.title}</span></h1>
             <h2>{post.body}</h2>
             <h3>by {post.author} | {post.voteScore} votes</h3>
+            <h3>{list_comments.filter(comment => comment.parentId === post.id).length} comments</h3>
             <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("upVote")}}>Up</a>
             <a href='#' className='likeabutton voteLink' onClick={() => {this.vote("downVote")}}>Down</a>
+            <Link className='likeabutton editLink' to={`/posts/${post.id}/edit`}>Edit</Link>
+            <Link className='likeabutton removeLink' to={`/posts/${post.id}/remove`}>Remove</Link>
             <h1><span>Comments</span></h1>
             <Comments
                     comments={this.props.comments.filter(comment => comment.deleted === false)}
@@ -121,7 +124,8 @@ class Post extends Component {
 function mapStateToProps(state) {
   return {
     post: state.post,
-    comments: state.comments
+    comments: state.comments,
+    list_comments: state.list_comments
   }
 }
 

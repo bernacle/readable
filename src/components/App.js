@@ -50,9 +50,9 @@ componentDidMount(){
               </div>
             )}/>
 
-            <Route exact path="/posts/:id" component={Post}/>
-            <Route path="/category/:category" component= {CategoryPosts}/>
             <Route exact path="/posts" component={AddPost} />
+            <Route exact path="/:category/:id" component={Post}/>
+            <Route exact path="/:category" component= {CategoryPosts}/>
             <Route path="/posts/:id/edit" component={EditPost}/>
             <Route path="/posts/:id/remove" component={RemovePost}/>
           </Switch>

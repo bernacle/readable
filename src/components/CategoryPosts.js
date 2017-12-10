@@ -5,15 +5,17 @@ import Posts from './Posts'
 import { fetchPosts, fetchCategoryPosts } from '../actions'
 
 class CategoryPosts extends Component {
-    
+
     render(){
-        const { posts } = this.props
+        const { posts, list_comments } = this.props
 
         return(
           <div>
             <Posts
                 posts={posts.filter((post) => (post.category === this.props.match.params.category))}
+                list_comments={list_comments}
             />
+            <Link className="likeabutton defaultLink" to="/">All Posts</Link>
           </div>
         )
     }
@@ -22,7 +24,8 @@ class CategoryPosts extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    list_comments: state.list_comments
   }
 }
 

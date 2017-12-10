@@ -163,6 +163,21 @@ span{
     color: white;
 }
 
+.buttonEdit {
+    width: 53%;
+    padding: 10px;
+    background: #FFF;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 40px;
+    font-size: 90%;
+    background-color: #dbb323;
+    color: white;
+}
+
 .buttonClose {
     width: 53%;
     padding: 10px;
