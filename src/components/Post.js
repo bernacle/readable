@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchPost, fetchComments, fetchVotePost, fetchAllComments } from '../actions'
+import { fetchPost, fetchComments, fetchVotePost } from '../actions'
 import { connect } from 'react-redux'
 import Comments from './Comments'
 import AddComment from './AddComment'
 import EditComment from './EditComment'
 import Modal from 'react-modal'
-import { insertComment, updateComment, fetchPosts } from '../actions'
+import { insertComment, updateComment } from '../actions'
 import uid from 'uid'
 
 
@@ -36,7 +36,7 @@ class Post extends Component {
 
   editComment = (e, body, id) => {
     let comment = {}
-    e.preventDefault
+    e.preventDefault()
     comment.id = id
     comment.timestamp = Date.now()
     comment.body = body
@@ -65,7 +65,7 @@ class Post extends Component {
   closeCommentsModal = () => this.setState(() => ({commentsModalOpen: false}))
 
     render(){
-      const { post, comments, list_comments } = this.props
+      const { post, list_comments } = this.props
       const { commentsModalOpen, commentsEditModalOpen } = this.state
 
         return(

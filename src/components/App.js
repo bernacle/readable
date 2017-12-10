@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import * as ReadableAPI from '../utils/ReadableAPI'
 import CategoriesBar from './CategoriesBar'
 import SortByBar from './SortByBar'
 import Posts from './Posts'

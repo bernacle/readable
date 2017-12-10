@@ -8,7 +8,6 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 import reducer from './reducers/index'
-import { reducer as formReducer } from 'redux-form'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 

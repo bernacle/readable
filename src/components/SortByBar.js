@@ -9,8 +9,7 @@ handleClick = (event) => {
 }
 
     render(){
-        const { posts } = this.props
-
+      
         return(
           <nav>
             <ul className='categories'>

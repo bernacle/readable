@@ -9,7 +9,6 @@ import {
 const initialState = []
 
 const comments = (state = initialState, action) => {
-  const {comments} = action
 
   switch (action.type) {
       case RECEIVE_COMMENTS:

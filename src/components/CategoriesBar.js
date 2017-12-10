@@ -14,7 +14,7 @@ handleClick = (event) => {
 }
 
     render(){
-        const { categories, posts, option } = this.props
+        const { categories, option } = this.props
 
         return(
           <nav>
@@ -32,10 +32,5 @@ handleClick = (event) => {
 
 }
 
-function mapStateToProps(state) {
-  return {
-    posts: state.posts
-  }
-}
 
-export default connect(mapStateToProps)(CategoriesBar)
+export default connect()(CategoriesBar)

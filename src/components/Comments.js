@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchVoteComment, fetchComments, removeComment } from '../actions'
+import { fetchVoteComment, removeComment } from '../actions'
 
 class Comments extends Component {
 

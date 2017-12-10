@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Posts from './Posts'
-import { fetchPosts, fetchCategoryPosts } from '../actions'
 
 class CategoryPosts extends Component {
 

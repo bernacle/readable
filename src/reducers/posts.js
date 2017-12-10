@@ -11,7 +11,6 @@ import sortBy from 'sort-by'
 const initialState = []
 
 const posts = (state = initialState, action) => {
-  const {posts} = action
 
   switch (action.type) {
       case RECEIVE_POSTS:

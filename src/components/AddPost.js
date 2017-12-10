@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import uid from 'uid'
-import Posts from './Posts'
 import { insertPost } from '../actions'
 import { push } from 'react-router-redux'
 
