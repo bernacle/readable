@@ -5,7 +5,7 @@ import { fetchPosts, fetchCategoryPosts, chooseCategory} from '../actions'
 class CategoriesBar extends Component {
 
 handleClick = (event) => {
-  if (event.target.value === "all"){
+  if (event.target.value === ""){
     this.props.dispatch(fetchPosts())
     this.props.dispatch(chooseCategory(event.target.value))
     window.history.pushState(null, null, '/')
@@ -24,7 +24,7 @@ handleClick = (event) => {
           <nav>
             <ul className='categories'>
                <select value={filters.category} onChange={this.handleClick} className='post-select-small'>
-                  <option key="all" value="all">All Categories</option>
+                  <option key="all" value="">All Categories</option>
                   {categories.map((category) => (
                     <option key={category.name} value={category.name}>{category.name}</option>
                   ))}

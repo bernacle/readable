@@ -7,7 +7,7 @@ import CategoryPosts from './CategoryPosts'
 import AddPost from './AddPost'
 import EditPost from './EditPost'
 import RemovePost from './RemovePost'
-import { fetchCategories, fetchPosts, fetchAllComments} from '../actions'
+import { fetchCategories, fetchPosts, fetchAllComments, chooseCategory} from '../actions'
 import { connect } from 'react-redux'
 import { Route, Link, withRouter, Switch } from 'react-router-dom'
 
@@ -23,7 +23,7 @@ componentDidMount(){
 
   render() {
 
-    const { categories, posts, list_comments} = this.props
+    const { categories, posts, list_comments, filters} = this.props
 
     return (
       <div className="container center">
@@ -43,7 +43,9 @@ componentDidMount(){
                     posts={posts}
                     list_comments={list_comments}
                 />
-                <Link className="likeabutton addLink" to="/posts">Add Post</Link>
+                {filters.category === "" &&
+                    <Link className="likeabutton addLink" to="/posts">Add Post</Link>
+                }
               </div>
             )}/>
 
@@ -64,7 +66,8 @@ function mapStateToProps(state) {
   return {
     categories: state.categories,
     posts: state.posts,
-    list_comments: state.list_comments
+    list_comments: state.list_comments,
+    filters: state.filters
   }
 }
 
