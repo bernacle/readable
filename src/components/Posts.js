@@ -6,7 +6,7 @@ import { fetchVotePost } from '../actions'
 class Posts extends Component {
 
   vote = (post, option) => {
-    this.props.dispatch(fetchVotePost(post.id, option))
+    this.props.dispatch(fetchVotePost(post.id, option, this.props.filters.voteScore))
   }
 
     render(){
@@ -31,7 +31,12 @@ class Posts extends Component {
           </div>
         )
     }
-
 }
 
-export default connect()(Posts)
+function mapStateToProps(state) {
+  return {
+    filters: state.filters
+  }
+}
+
+export default connect(mapStateToProps)(Posts)

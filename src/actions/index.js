@@ -18,6 +18,8 @@ export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const DELETE_FROM_LIST_COMMENTS = 'DELETE_FROM_LIST_COMMENTS'
 export const LIST_COMMENTS = 'LIST_COMMENTS'
 export const SORT_POSTS = 'SORT_POSTS'
+export const CHOOSE_CATEGORY = 'CHOOSE_CATEGORY'
+export const CHOOSE_SORT = 'CHOOSE_SORT'
 
 export const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
@@ -105,12 +107,15 @@ export const votePosts = post => ({
   post
 })
 
-export const fetchVotePost = (id, option) => dispatch => (
+export const fetchVotePost = (id, option, sortBy) => dispatch => (
   ReadableAPI
       .votePost(id, option)
       .then((post) => {
         dispatch(votePost(post))
         dispatch(votePosts(post))
+        if(sortBy === '-voteScore'){
+          dispatch(sortPosts(sortBy))
+        }
       })
 )
 
@@ -226,4 +231,14 @@ export const removeComment = (comment) => dispatch => (
 export const sortPosts = (option) => ({
   type: SORT_POSTS,
   option
+})
+
+export const chooseCategory = (category) => ({
+  type: CHOOSE_CATEGORY,
+  category
+})
+
+export const chooseSort = (voteScore) => ({
+  type: CHOOSE_SORT,
+  voteScore
 })
